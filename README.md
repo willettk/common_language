@@ -1,7 +1,7 @@
 # common_language
 
 > *The United States and Great Britain are two countries separated by a common language.*
-> - George Bernard Shaw
+> - George Bernard Shaw<sup>*[{{citation needed}}](https://english.stackexchange.com/questions/74737/what-is-the-origin-of-the-phrase-two-nations-divided-by-a-common-language)*</sup>
 
 For those annoying times when Americans need to submit articles to [MNRAS](https://academic.oup.com/mnras), 
 or Brits to [ApJ](https://iopscience.iop.org/journal/0004-637X).
