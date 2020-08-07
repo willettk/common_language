@@ -13,12 +13,12 @@ Word list originally from http://www.tysto.com/uk-us-spelling-list.html
 
 ## Examples
 
-#### 🇬🇧  ->  🇺🇸
+#### 🇺🇸 -> 🇬🇧 
 ```
 python britishise.py manuscript_us.tex [manuscript_gb.tex]
 ```
 
-#### 🇺🇸 -> 🇬🇧 
+#### 🇬🇧  ->  🇺🇸
 ```
 python americanize.py manuscript_gb.tex [manuscript_us.tex]
 ```
