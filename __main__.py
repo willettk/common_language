@@ -49,15 +49,18 @@ def main():
         print('| Beginning Americanization |')
     print(    '|------------ × ------------|')
     print()
-    with open(args.input_filename, 'r') as inF:
+    with open(args.input_filename, 'r', encoding='utf-8') as inF:
         for line_no, line in enumerate(inF):
             undone = tryUndo(line)
             if undone != line:
                 print(f'Error: undo rule can operate on original string. Line {line_no}: ')
                 print(line)
                 raise ValueError
-    with open(args.input_filename, 'r') as inF:
-        with open(args.output_filename, 'w', newline='\n') as outF:
+    with open(args.input_filename, 'r', encoding='utf-8') as inF:
+        with open(
+            args.output_filename, 'w', newline='\n', 
+            encoding='utf-8', 
+        ) as outF:
             for line_no, line in enumerate(inF):
                 for uk, us in uk_us:
                     for source, target in iterCapitalize(*selectDirection(
