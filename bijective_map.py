@@ -1,6 +1,14 @@
-import re,sys
+'''
+Word list originally from http://www.tysto.com/uk-us-spelling-list.html
+'''
 
-wordpairs = [
+undo = [
+    ('\\centreing', '\\centering'), 
+    ('\\begin{centre}', '\\begin{center}'), 
+    ('\\end{centre}', '\\end{center}'), 
+]
+
+uk_us = [*reversed([
     ('accessorise','accessorize'),
     ('accessorised','accessorized'),
     ('accessorises','accessorizes'),
@@ -11,8 +19,8 @@ wordpairs = [
     ('acclimatises','acclimatizes'),
     ('acclimatising','acclimatizing'),
     ('accoutrements','accouterments'),
-    ('aeon','eon'),
-    ('aeons','eons'),
+    #('aeon','eon'),
+    #('aeons','eons'),
     ('aerogramme','aerogram'),
     ('aerogrammes','aerograms'),
     ('aeroplane','airplane'),
@@ -430,7 +438,7 @@ wordpairs = [
     ('disc ','disk '),
     ('disc.','disk.'),
     ('disc,','disk,'),
-    #('disc?','disk?'),
+    ('disc?','disk?'),
     ('disc;','disk;'),
     ('disc-','disk-'),
     ('discolour','discolor'),
@@ -1196,8 +1204,8 @@ wordpairs = [
     ('philosophised','philosophized'),
     ('philosophises','philosophizes'),
     ('philosophising','philosophizing'),
-    ('philtre','filter'),
-    ('philtres','filters'),
+    #('philtre','filter'),
+    #('philtres','filters'),
     ('phoney','phony'),
     ('plagiarise','plagiarize'),
     ('plagiarised','plagiarized'),
@@ -1744,53 +1752,5 @@ wordpairs = [
     ('yoghourt','yogurt'),
     ('yoghourts','yogurts'),
     ('yoghurt','yogurt'),
-    ('yoghurts','yogurts')]
-
-dontfix = [('centreing','centering')]
-
-wordback = wordpairs[::-1]
-wordback.extend(dontfix)
-
-try:
-    filename = sys.argv[1]
-except IndexError:
-    print('\nMust include name of file with input text')
-    print('')
-    print('Example:')
-    print('\tpython britishize.py amtext1.tex [brittext1.tex]\n')
-    sys.exit(0)
-
-with open(filename,'r') as f:
-    filedata = f.read()
-
-padding = 20
-
-print('Beginning Americanization')
-print('------------------------')
-
-count = 0
-for _a,_b in wordback:
-
-    for b,a in ((_b,_a),(_b.capitalize(),_a.capitalize())):
-
-        l = filedata.count(a)
-        if l > 0:
-            indices = [m.start() for m in re.finditer(a, filedata)]
-            for ind in indices:
-                oldbit = filedata[ind-padding:ind+padding]
-                newbit = oldbit.replace(a,b)
-                print("'... {0:50s} ...' - > '... {1:50s} ...'".format(''.join(oldbit.split('\n')),''.join(newbit.split('\n'))))
-            filedata = filedata.replace(a,b)
-            count += l
-
-print('')
-print('Finished Americanization of {0:d}'.format(sys.argv[1]))
-print('{0:d} changes made.'.format(count))
-print('------------------------')
-
-if len(sys.argv) > 2:
-    outfile = sys.argv[2]
-    
-    with open(outfile,'w') as f:
-        f.write(filedata)
-
+    ('yoghurts','yogurts'), 
+])]
